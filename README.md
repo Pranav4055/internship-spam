@@ -1,8 +1,8 @@
-# InternShield
+# InternShield.
 
 InternShield is a student project for reviewing internship offer emails. It provides an explainable, rule-based first-pass review of pasted email text and optional raw headers, with security and privacy controls for deployment. Reports describe indicators, not proof of fraud or legitimacy.
 
-## Requirements
+## Requirements.
 
 - Node.js 20.19+ or 22.12+ (the Vite version in this project requires a recent Node release)
 - npm
@@ -38,7 +38,7 @@ InternShield is a student project for reviewing internship offer emails. It prov
 
 The backend loads `.env` from the repository root using a path relative to its config module, including when `npm run seed` executes in the `server/` workspace. Seed failures print a fixed diagnostic category and safe next step, never the URI or raw driver error. For `DNS_RESOLVER_REFUSED`, check that the current network, VPN, and firewall allow DNS SRV queries to the configured resolver; this is separate from Atlas IP access-list configuration.
 
-## Environment variables
+## Environment variables.
 
 | Variable | Required | Default | Purpose |
 | --- | --- | --- | --- |
@@ -60,7 +60,7 @@ Copy `.env.example` to `.env` and configure two Atlas database users. The runtim
 - If Atlas is disconnected, the rules collection is empty, or no supported rules are enabled, the endpoint returns HTTP 503. It never substitutes an empty rule set and presents that as a successful scan.
 - Unknown `/api/*` paths return a safe JSON 404 response.
 
-## Analysis behavior and limits
+## Analysis behavior and limits.
 
 - Content rules look for combined request/context signals: payment plus an internship fee, a request plus credentials or sensitive information, explicit urgency phrases, guaranteed-outcome claims, compensation claims, and multiple missing offer details. A keyword alone does not trigger a payment or credential finding. Clear negations such as “never share your password” are excluded.
 - Header checks compare From, Reply-To, and Return-Path domains. Authentication result lines, Received lines, and all other pasted headers are treated as untrusted text. A pasted SPF/DKIM/DMARC pass is never treated as verified.
@@ -77,7 +77,7 @@ Copy `.env.example` to `.env` and configure two Atlas database users. The runtim
 - Requests are protected with Helmet's default security headers, strict JSON parsing, a 64 KiB body limit, per-field byte limits, exact field validation, and a per-process rate limit. Errors returned to clients are generic and do not include exception text or submitted content. The app does not emit request bodies in its logs.
 - The runtime Atlas credential should have only database `read` permission. The separate seed credential needs `readWrite` only while seeding. Store both in the backend environment, not frontend configuration.
 
-## Checks
+## Check
 
 Run the server and frontend test suites, then build the production frontend:
 
