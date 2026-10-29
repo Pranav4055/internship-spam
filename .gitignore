@@ -1,0 +1,27 @@
+# Playwright artifacts and screenshots
+.playwright-cli/
+output/
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+node_modules/
+client/node_modules/
+server/node_modules/
+client/dist/
+server/dist/
+
+# Test artifacts
+coverage/
+playwright-report/
+test-results/
+
+# Local coding-agent configuration and skills
+.agents/
+
+# Local browser artifacts
+.playwright-cli/
+output/
